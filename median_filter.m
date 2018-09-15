@@ -28,9 +28,7 @@ for i=2:row-1
                 window(x+2, y+2)=double(b(i+x, j+y));
             end
         end
-        flatwindow=reshape(window, [1, 9]);
-        flatwindow=sort(flatwindow);
-        
+        flatwindow=reshape(window, [1, 9]);        
         b(i, j)=uint8(median(flatwindow));
     end
 end               
