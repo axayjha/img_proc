@@ -32,9 +32,14 @@ for i=2:row-1
         b(i, j)=uint8(summ);
     end
 end               
-        
 
-disp(size(b));    
-imwrite(b, 'avgfilter.pgm');
+for i=1:row-2
+    for j=1:col-2
+        out(i, j) = b(i+1,j+1);                       
+    end
+end 
+
+%disp(size(out));    
+imwrite(out, 'avgfilter.pgm');
 subplot(1,2,1), imshow(a);
-subplot(1,2,2), imshow(uint8(b));
+subplot(1,2,2), imshow(uint8(out));

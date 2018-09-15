@@ -1,8 +1,9 @@
 a=imread('lena_noisy1.pgm');
-
 [row, col] = size(a);
+
 kernel=[1 2 3; 6 2 3; 9 2 4];
 k_sum=sum(sum(kernel));
+
 for i=2:row+1
     for j=2:col+1
         b(i,j) = a(i-1,j-1);                       
@@ -34,10 +35,16 @@ for i=2:row-1
         summ = summ/k_sum;
         b(i, j)=uint8(summ);
     end
-end               
+end          
+
+for i=1:row-2
+    for j=1:col-2
+        out(i, j) = b(i+1,j+1);                       
+    end
+end 
         
 
-disp(size(b));    
-imwrite(b, 'wtdavgfilter.pgm');
+%disp(size(out));    
+imwrite(out, 'wtdavgfilter.pgm');
 subplot(1,2,1), imshow(a);
-subplot(1,2,2), imshow(uint8(b));
+subplot(1,2,2), imshow(uint8(out));

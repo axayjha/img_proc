@@ -1,8 +1,6 @@
 a=imread('lena_noisy1.pgm');
-
 [row, col] = size(a);
-kernel=[1 2 3; 6 2 3; 9 2 4];
-k_sum=sum(sum(kernel));
+
 for i=2:row+1
     for j=2:col+1
         b(i,j) = a(i-1,j-1);                       
@@ -24,8 +22,7 @@ col=col+2;
 c=b;
 for i=2:row-1
     for j=2:col-1
-        summ=0;
-       
+        summ=0;       
         for x=-1:1
             for y=-1:1
                 window(x+2, y+2)=double(b(i+x, j+y));
@@ -37,9 +34,15 @@ for i=2:row-1
         c(i, j)=uint8(min(flatwindow));
     end
 end               
-        
 
-disp(size(c));    
-imwrite(c, 'medianbfilter.pgm');
+for i=1:row-2
+    for j=1:col-2
+        out(i, j) = c(i+1,j+1);                       
+    end
+end 
+
+%size(out)
+%disp(size(c));    
+imwrite(out, 'minfilter.pgm');
 subplot(1,2,1), imshow(a);
-subplot(1,2,2), imshow(uint8(c));
+subplot(1,2,2), imshow(uint8(out));
