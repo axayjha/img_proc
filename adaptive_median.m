@@ -25,8 +25,8 @@ for i=2:row-1
         flag=0;
         for x=-1*floor(windowsize/2):floor(windowsize/2)
             for y=-1*floor(windowsize/2):floor(windowsize/2)
-                window(x+2, y+2)=double(b(i+x, j+y));
-                if (window(x+2, y+2)~=0 | window(x+2, y+2)~=255)
+                window(x+ceil(windowsize/2), y+ceil(windowsize/2))=double(b(i+x, j+y));
+                if (window(x+ceil(windowsize/2), y+ceil(windowsize/2))~=0 | window(x+ceil(windowsize/2), y+ceil(windowsize/2))~=255)
                     flag=1;
                 end                
             end
