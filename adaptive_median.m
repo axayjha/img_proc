@@ -39,7 +39,7 @@ for i=2:row-1
             windowsize=3;
         end
         
-        flatwindow=reshape(window, [1, 9]);        
+        flatwindow=reshape(window, [1, windowsize*windowsize]);        
         b(i, j)=uint8(median(flatwindow));
     end
 end               
