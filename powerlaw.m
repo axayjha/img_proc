@@ -1,3 +1,4 @@
+%% gamma correction
 a=imread('original.pgm');
 gamma=1.2;
 c=1;
